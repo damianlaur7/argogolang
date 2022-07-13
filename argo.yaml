@@ -1,4 +1,4 @@
-apiVersion: argoproj.in/vaplha1
+apiVersion: argoproj.in/v1aplha1
 kind: Application
 metadata:
   name: argo-argo-yaml
