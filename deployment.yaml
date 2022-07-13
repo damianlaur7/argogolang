@@ -2,11 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: golang-deployment
-  namespace: newnamespace
   labels:
     app: golang
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: golang
@@ -33,4 +32,12 @@ spec:
               secretKeyRef:
                 key: url
                 name: db-secret
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8081
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8081
         
