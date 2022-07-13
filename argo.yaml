@@ -1,0 +1,21 @@
+apiVersion: argoproj.in/vaplha1
+kind: Application
+metadata:
+  name: argo-argo-yaml
+  namespace: argocd
+spec:
+  project: default
+  source: 
+    repoURL: https://github.com/damianlaur7/argogolang.git
+    targetRevision: main
+    path: /argo
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argogolangyaml
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
+      
